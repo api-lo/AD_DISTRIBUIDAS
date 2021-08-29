@@ -22,9 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListaUsuarios extends AppCompatActivity {
-    private List<ListaUser> lista;
+    List<ListaUser>  list=new ArrayList<>();
     RequestQueue requestQueue;
-    RecyclerView recyclerlist;
+    RecyclerView recyclerView;
     ListAdapter listAdapter;
 
     @Override
@@ -32,22 +32,23 @@ public class ListaUsuarios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_usuarios);
         requestQueue = Volley.newRequestQueue(this);
-        inicializarelementos();
+        jsonArrayRequest();
     }
-    private void inicializarelementos() {
-        recyclerlist = findViewById(R.id.recycler);
-        recyclerlist.setLayoutManager(new LinearLayoutManager(this));
-        listAdapter = new ListAdapter(lista, this);
-        recyclerlist.setAdapter(listAdapter);
+    private void inicializarelementos(List<ListaUser> list02 ) {
+        ListAdapter lista=new ListAdapter(list02, this);
+        RecyclerView recyclerView=findViewById(R.id.recycler);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(lista);
     }
 
-  /* private void jsonArrayRequest() {
+   private void jsonArrayRequest() {
        String url="https://api.jsonbin.io/b/612aef1ac5159b35ae05cf10";
         JsonArrayRequest json = new JsonArrayRequest(Request.Method.GET, url, null,
                 new com.android.volley.Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        lista = new ArrayList<>();
+                        list = new ArrayList<>();
                         int size = response.length();
                         for (int i = 0; i < size; i++) {
                             try {
@@ -55,13 +56,14 @@ public class ListaUsuarios extends AppCompatActivity {
                                 String username = objeto.getString("username");
                                 String tipo = objeto.getString("tipo");
                                 ListaUser elemento = new ListaUser(username,tipo);
-                                lista.add(elemento);
+                                list.add(elemento);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                                 System.out.println(e.getMessage());
                             }
                         }
-                        inicializarelementos();
+                        System.out.println(list.get(0).getUsername());
+                        inicializarelementos(list);
                     }
                 }, new com.android.volley.Response.ErrorListener() {
             @Override
@@ -69,6 +71,6 @@ public class ListaUsuarios extends AppCompatActivity {
             }
         });
         requestQueue.add(json);
-    }*/
+    }
 
 }
