@@ -99,6 +99,7 @@
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
 
+                android:onClick="perfil"
                 app:cardBackgroundColor="#fffffa"
                 app:cardCornerRadius="20dp">
 
@@ -134,6 +135,7 @@
                 android:elevation="0dp"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
+                android:onClick="mapa"
                 app:cardBackgroundColor="#fffffa"
                 app:cardCornerRadius="20dp">
 

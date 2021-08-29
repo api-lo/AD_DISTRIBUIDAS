@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                                 Intent intent1 = new Intent(MainActivity.this, MenuOpcione.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable("usuario",MainActivity.this.user);
-                                bundle.putSerializable("imagen",MainActivity.this.user);
+                                bundle.putSerializable("imagen",MainActivity.this.user.getImage());
                                 intent1.putExtras(bundle);
                                 startActivity(intent1);
                             }
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                                 Intent intent1 = new Intent(MainActivity.this, ActivityUsuario.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable("usuario",MainActivity.this.user);
-                                bundle.putSerializable("imagen",MainActivity.this.user);
+                                bundle.putSerializable("imagen",MainActivity.this.user.getImage());
                                 intent1.putExtras(bundle);
                                 startActivity(intent1);
                             }
