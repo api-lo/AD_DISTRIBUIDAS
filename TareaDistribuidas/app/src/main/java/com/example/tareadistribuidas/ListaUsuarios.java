@@ -11,6 +11,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.tareadistribuidas.model.ListaUser;
 import com.example.tareadistribuidas.model.User;
 
 import org.json.JSONArray;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListaUsuarios extends AppCompatActivity {
-    private List<User> lista;
+    private List<ListaUser> lista;
     RequestQueue requestQueue;
     RecyclerView recyclerlist;
     ListAdapter listAdapter;
@@ -31,6 +32,7 @@ public class ListaUsuarios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_usuarios);
         requestQueue = Volley.newRequestQueue(this);
+        inicializarelementos();
     }
     private void inicializarelementos() {
         recyclerlist = findViewById(R.id.recycler);
@@ -39,9 +41,9 @@ public class ListaUsuarios extends AppCompatActivity {
         recyclerlist.setAdapter(listAdapter);
     }
 
-   /* private void jsonArrayRequest() {
-        JsonArrayRequest json = new JsonArrayRequest(Request.Method.GET,
-                Ruta, null,
+  /* private void jsonArrayRequest() {
+       String url="https://api.jsonbin.io/b/612aef1ac5159b35ae05cf10";
+        JsonArrayRequest json = new JsonArrayRequest(Request.Method.GET, url, null,
                 new com.android.volley.Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -50,16 +52,10 @@ public class ListaUsuarios extends AppCompatActivity {
                         for (int i = 0; i < size; i++) {
                             try {
                                 JSONObject objeto = new JSONObject(response.get(i).toString());
-                                String issue_id = objeto.getString("issue_id");
-                                String volume = objeto.getString("volume");
-                                String number = objeto.getString("number");
-                                String year = objeto.getString("year");
-                                String date_published = objeto.getString("date_published");
-                                String title = objeto.getString("title");
-                                String doi = objeto.getString("doi");
-                                String cover = objeto.getString("cover");
-                                //ListElement elemento = new ListElement(issue_id, volume, number, year, date_published, title, doi, cover);
-                                //lista.add(elemento);
+                                String username = objeto.getString("username");
+                                String tipo = objeto.getString("tipo");
+                                ListaUser elemento = new ListaUser(username,tipo);
+                                lista.add(elemento);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                                 System.out.println(e.getMessage());

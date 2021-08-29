@@ -78,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
                                 if(user.equals(usuario)){
                                     requestLogin(usuario,pass,tipo);
-                                }break;
+                                    break;
+                                }
 
                             }catch (JSONException e){
                                 e.printStackTrace();
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                             response.getString("password"), response.getString("image"), response.getBoolean("state"));
                     if (MainActivity.this.user.getUsername().equalsIgnoreCase(user) || MainActivity.this.user.getMail().equalsIgnoreCase(user)) {
                         if (password.equals(MainActivity.this.user.getPassword())) {
-                            if(tipo.equals("admin")){
+                            if(tipo.equals("user")){
                                 SessionData.setUsuario(MainActivity.this.user);
                                 Toast.makeText(MainActivity.this, "Welcome: " + MainActivity.this.user.getUsername(), Toast.LENGTH_LONG).show();
                                 Intent intent1 = new Intent(MainActivity.this, MenuOpcione.class);
@@ -123,7 +124,8 @@ public class MainActivity extends AppCompatActivity {
                                 bundle.putSerializable("imagen",MainActivity.this.user);
                                 intent1.putExtras(bundle);
                                 startActivity(intent1);
-                            }if(tipo.equals("user")){
+                            }
+                            if(tipo.equals("admin")){
                                 SessionData.setUsuario(MainActivity.this.user);
                                 Toast.makeText(MainActivity.this, "Welcome: " + MainActivity.this.user.getUsername(), Toast.LENGTH_LONG).show();
                                 Intent intent1 = new Intent(MainActivity.this, ActivityUsuario.class);

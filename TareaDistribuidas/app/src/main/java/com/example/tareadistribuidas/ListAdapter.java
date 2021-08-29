@@ -10,17 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.example.tareadistribuidas.model.User;
+
+import com.example.tareadistribuidas.model.ListaUser;
 
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
 
-    private List<User> listausuarios;
+    private List<ListaUser> listausuarios;
     private Context context;
 
-    public ListAdapter(List<User> listaelementos, Context context) {
+    public ListAdapter(List<ListaUser> listaelementos, Context context) {
         this.listausuarios = listaelementos;
         this.context = context;
     }
@@ -34,13 +34,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ListAdapter.ViewHolder holder, int position) {
-        holder.txtNombrerevista.setText(listausuarios.get(position).getFirstName());
-        holder.txtfecha.setText(listausuarios.get(position).getLastName());
-        holder.txtVol.setText(listausuarios.get(position).getBirthdate());
-        Glide.with(context)
-                .load(listausuarios.get(position).getImage())
-                .centerCrop()
-                .into(holder.imgfoto);
+        holder.txtNombrerevista.setText(listausuarios.get(position).getUsername());
+        holder.txtfecha.setText(listausuarios.get(position).getTipo());
     }
 
     @Override
@@ -59,10 +54,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgfoto = itemView.findViewById(R.id.imgfoto);
             txtNombrerevista = itemView.findViewById(R.id.txtNombrerevista);
             txtfecha = itemView.findViewById(R.id.txtfecha);
-            txtVol=itemView.findViewById(R.id.txtDoi);
+
 
         }
     }
