@@ -79,7 +79,6 @@ public class EditarPerfil extends AppCompatActivity {
     }
 
     public void btnEditar(View view){
-//        requestRegitrar(user);
         addFirebaseUsuario();
     }
 

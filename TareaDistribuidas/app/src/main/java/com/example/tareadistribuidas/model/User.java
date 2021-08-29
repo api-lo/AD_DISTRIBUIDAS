@@ -1,19 +1,8 @@
 package com.example.tareadistribuidas.model;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.io.Serializable;
 
-/**
- *
- * @author amanda
- */
 public class User implements Serializable {
-
     int idUsuario;
     String firstName, lastName, birthdate, gender, phone, username, mail,
             password, image;
@@ -21,7 +10,6 @@ public class User implements Serializable {
 
     public User() {
     }
-
     public User(int idUsuario, String firstName, String lastName, String birthdate, String gender, String phone, String username, String mail, String password, String image, boolean state) {
         this.idUsuario = idUsuario;
         this.firstName = firstName;

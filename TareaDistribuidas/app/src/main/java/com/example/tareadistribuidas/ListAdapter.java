@@ -40,8 +40,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(final ListAdapter.ViewHolder holder,final int position) {
         holder.bindData(listausuarios.get(position));
-        //holder.txtNombrerevista.setText(listausuarios.get(position).getUsername());
-        //holder.txtfecha.setText(listausuarios.get(position).getTipo());
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
