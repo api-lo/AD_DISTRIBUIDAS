@@ -16,12 +16,14 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.tareadistribuidas.model.SessionData;
 import com.example.tareadistribuidas.model.User;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,11 +56,49 @@ public class MainActivity extends AppCompatActivity {
         String pass = txtContrasenia.getText().toString();
 
         //pass = DigestUtils.sha1Hex(pass);
-        requestLogin(user, pass);
+        //requestLogin(user, pass);
+        requestAutenticar(user,pass);
+
+    }
+    private  void requestAutenticar(String usuario,String pass){
+        String url="https://api.jsonbin.io/b/612aef1ac5159b35ae05cf10";
+        JsonArrayRequest json=new JsonArrayRequest(Request.Method.GET,
+                url, null,
+                new com.android.volley.Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        int size=response.length();
+                        String user="";
+                        String tipo="";
+                        for(int i=0;i<size;i++){
+                            try {
+                                JSONObject objeto = new JSONObject(response.get(i).toString());
+                                user=objeto.getString("username");
+                                tipo=objeto.getString("tipo");
+
+                                if(user.equals(usuario)){
+                                    requestLogin(usuario,pass,tipo);
+                                }break;
+
+                            }catch (JSONException e){
+                                e.printStackTrace();
+                                System.out.println(e.getMessage());
+                            }
+                        }
+                    }
+                }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+        requestQueue.add(json);
 
     }
 
-    private void requestLogin(String user, String password) {
+
+
+
+    private void requestLogin(String user, String password,String tipo) {
         String url = "https://aplicaciones.uteq.edu.ec/WenServisPA/webresources/generic/login";
         HashMap<String, String> hash = new HashMap<>();
         hash.put("username", user);
@@ -74,14 +114,26 @@ public class MainActivity extends AppCompatActivity {
                             response.getString("password"), response.getString("image"), response.getBoolean("state"));
                     if (MainActivity.this.user.getUsername().equalsIgnoreCase(user) || MainActivity.this.user.getMail().equalsIgnoreCase(user)) {
                         if (password.equals(MainActivity.this.user.getPassword())) {
-                            SessionData.setUsuario(MainActivity.this.user);
-                            Toast.makeText(MainActivity.this, "Welcome: " + MainActivity.this.user.getUsername(), Toast.LENGTH_LONG).show();
-                            Intent intent1 = new Intent(MainActivity.this, MenuOpcione.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putSerializable("usuario",MainActivity.this.user);
-                            bundle.putSerializable("imagen",MainActivity.this.user);
-                            intent1.putExtras(bundle);
-                            startActivity(intent1);
+                            if(tipo.equals("admin")){
+                                SessionData.setUsuario(MainActivity.this.user);
+                                Toast.makeText(MainActivity.this, "Welcome: " + MainActivity.this.user.getUsername(), Toast.LENGTH_LONG).show();
+                                Intent intent1 = new Intent(MainActivity.this, MenuOpcione.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("usuario",MainActivity.this.user);
+                                bundle.putSerializable("imagen",MainActivity.this.user);
+                                intent1.putExtras(bundle);
+                                startActivity(intent1);
+                            }if(tipo.equals("user")){
+                                SessionData.setUsuario(MainActivity.this.user);
+                                Toast.makeText(MainActivity.this, "Welcome: " + MainActivity.this.user.getUsername(), Toast.LENGTH_LONG).show();
+                                Intent intent1 = new Intent(MainActivity.this, ActivityUsuario.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("usuario",MainActivity.this.user);
+                                bundle.putSerializable("imagen",MainActivity.this.user);
+                                intent1.putExtras(bundle);
+                                startActivity(intent1);
+                            }
+
 
                         } else {
                             Toast.makeText(MainActivity.this, "Password error", Toast.LENGTH_LONG).show();

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:andriod="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    andriod:id="@+id/cv"
+    andriod:layout_width="match_parent"
+    andriod:layout_height="180dp"
+    andriod:animateLayoutChanges="true"
+    andriod:background="#e8e8e4"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
+
+
+    <RelativeLayout
+        andriod:layout_width="match_parent"
+        andriod:layout_height="wrap_content"
+        andriod:background="#e2eafc"
+        andriod:orientation="horizontal"
+        andriod:padding="6dp">
+
+
+        <ImageView
+            andriod:id="@+id/imgfoto"
+            andriod:layout_width="110dp"
+            andriod:layout_height="160dp"
+            andriod:layout_alignParentStart="true"
+            andriod:layout_alignParentLeft="true"
+            andriod:layout_centerVertical="true"
+            andriod:layout_gravity="center"
+            andriod:paddingLeft="10dp"
+            andriod:paddingRight="10dp"
+            andriod:scaleType="centerCrop" />
+
+        <LinearLayout
+            andriod:id="@+id/linearLayout"
+            andriod:layout_width="match_parent"
+            andriod:layout_height="wrap_content"
+            andriod:layout_alignParentTop="true"
+            andriod:layout_marginLeft="4dp"
+            andriod:layout_marginTop="2dp"
+            andriod:layout_toRightOf="@+id/imgfoto"
+            andriod:orientation="vertical">
+
+            <TextView
+                andriod:id="@+id/txtNombrerevista"
+                andriod:layout_width="match_parent"
+                andriod:layout_height="wrap_content"
+                andriod:layout_marginBottom="2dp"
+                andriod:text="Nombre"
+                andriod:textColor="@android:color/black"
+                andriod:textSize="20sp"
+                andriod:textStyle="bold" />
+
+            <TextView
+                andriod:id="@+id/txtfecha"
+                andriod:layout_width="match_parent"
+                andriod:layout_height="wrap_content"
+                andriod:paddingTop="8sp"
+                andriod:text="Fecha"
+                andriod:textSize="18sp"
+                andriod:textStyle="normal" />
+
+            <TextView
+                andriod:id="@+id/txtDoi"
+                andriod:layout_width="match_parent"
+                andriod:layout_height="wrap_content"
+                andriod:paddingTop="8sp"
+                andriod:text="TextView"
+                andriod:textColor="#3a0ca3"
+                andriod:textSize="14sp"
+                andriod:textStyle="normal|bold" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

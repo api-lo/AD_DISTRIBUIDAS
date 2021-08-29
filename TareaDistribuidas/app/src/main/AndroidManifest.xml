@@ -17,6 +17,12 @@
         android:theme="@style/Theme.TareaDistribuidas"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ActivityUsuario"
+            android:exported="true" />
+        <activity
+            android:name=".ListaUsuarios"
+            android:exported="true" />
+        <activity
             android:name=".Mapa"
             android:exported="true" />
         <activity

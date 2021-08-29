@@ -200,7 +200,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-black"
-                        android:text="Administrar usuarios"
+                        android:text="Administrar Paises"
                         android:textColor="#343a40"
                         android:textSize="18sp" />
                 </LinearLayout>
