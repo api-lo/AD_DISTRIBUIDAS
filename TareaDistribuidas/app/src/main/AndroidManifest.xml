@@ -17,6 +17,12 @@
         android:theme="@style/Theme.TareaDistribuidas"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Mapa"
+            android:exported="true" />
+        <activity
+            android:name=".VisualizarMapa"
+            android:exported="true" />
+        <activity
             android:name=".EditarPerfil"
             android:exported="true" />
         <activity
@@ -34,14 +40,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCv4ip45XvRleqPE8h86tmYB4ducTpy8Eo" />
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>

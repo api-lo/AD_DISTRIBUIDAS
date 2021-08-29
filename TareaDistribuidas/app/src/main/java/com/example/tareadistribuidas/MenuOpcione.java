@@ -32,4 +32,9 @@ public class MenuOpcione extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void opcionMapa(View view){
+        Intent intent=new Intent(MenuOpcione.this, VisualizarMapa.class);
+        startActivity(intent);
+    }
+
 }

@@ -138,6 +138,7 @@
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
 
+                android:onClick="opcionMapa"
                 app:cardBackgroundColor="#fffffa"
                 app:cardCornerRadius="20dp">
 

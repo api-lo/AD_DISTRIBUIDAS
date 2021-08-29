@@ -57,6 +57,10 @@ dependencies {
 
     implementation group: 'commons-codec', name: 'commons-codec', version: '1.9'
 
+    //ML KIT
+    implementation platform('com.google.firebase:firebase-bom:28.3.0')
+    implementation 'com.google.firebase:firebase-ml-vision:24.0.3'
+
     //MAPA
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
