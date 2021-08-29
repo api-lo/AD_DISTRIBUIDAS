@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "161978263944",
+    "project_id": "apisvarias",
+    "storage_bucket": "apisvarias.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161978263944:android:5a811b6c3ae17badd7723d",
+        "android_client_info": {
+          "package_name": "com.example.tareadistribuidas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161978263944-0ost618qdbrbh2t2htu935adid6bq9jq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBp2de7-Ob1MRqukHkSd-GzT-bZqfGMVns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161978263944-0ost618qdbrbh2t2htu935adid6bq9jq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
